@@ -16,27 +16,27 @@ public class CursoController {
         this.service = service;
     }
 
-    @PostMapping
+    @PostMapping //cria o curso
     public ResponseEntity<?> criarCurso(@RequestBody CursoDTO dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.criarCurso(dto));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") //busca o curso pelo id
     public ResponseEntity<?> buscarCursoId(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(service.buscarCursoId(id));
     }
 
-    @GetMapping
+    @GetMapping //busca por todos os cursos
     public ResponseEntity<?> buscarTodosCursos() {
         return ResponseEntity.status(HttpStatus.OK).body(service.buscarTodosCursos());
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}") //atualiza o curso
     public ResponseEntity<?> atualizarCurso(@PathVariable Long id, @RequestBody CursoDTO dto) {
         return ResponseEntity.status(HttpStatus.OK).body(service.atualizarCurso(id, dto));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") //deleta o curso
     public ResponseEntity<?> delete(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(service.deletarCurso(id));
     }
