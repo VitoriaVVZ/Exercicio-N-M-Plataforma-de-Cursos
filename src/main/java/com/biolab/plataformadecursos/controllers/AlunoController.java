@@ -16,27 +16,27 @@ public class AlunoController {
         this.service = service;
     }
 
-    @PostMapping
+    @PostMapping //cadastra o aluno
     public ResponseEntity<?> cadastrarAluno(@RequestBody AlunoDTO dto){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.cadastrarAluno(dto));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") //busca o aluno pelo id
     public ResponseEntity<?> buscarAlunoId(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(service.buscarAlunoId(id));
     }
 
-    @GetMapping
+    @GetMapping //busca por todos os alunos
     public ResponseEntity<?> buscarTodosAlunos(){
         return ResponseEntity.status(HttpStatus.OK).body(service.buscarTodosAlunos());
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}") //atualiza as infromações do aluno
     public ResponseEntity<?> atualizarAluno(@PathVariable Long id, @RequestBody AlunoDTO dto){
         return ResponseEntity.status(HttpStatus.OK).body(service.atualizarAluno(id, dto));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") //deleta o aluno
     public ResponseEntity<?> delete(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(service.deletarAluno(id));
     }
