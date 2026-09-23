@@ -18,14 +18,13 @@ public class MatriculaService {
     private final AlunoRepository alunoRepository;
     private final CursoRepository cursoRepository;
 
-    public MatriculaService(MatriculaRepository matriculaRepository,
-                            AlunoRepository alunoRepository,
-                            CursoRepository cursoRepository) {
+    public MatriculaService(MatriculaRepository matriculaRepository, AlunoRepository alunoRepository, CursoRepository cursoRepository) {
         this.matriculaRepository = matriculaRepository;
         this.alunoRepository = alunoRepository;
         this.cursoRepository = cursoRepository;
     }
 
+    //criar a matricula
     public String matricular(Long alunoId, Long cursoId) {
         Aluno aluno = alunoRepository.findById(alunoId).orElseThrow();
         Curso curso = cursoRepository.findById(cursoId).orElseThrow();
@@ -38,17 +37,20 @@ public class MatriculaService {
         return "Aluno matriculado no curso com sucesso!!";
     }
 
+    //deletar a matricula
     public String removerMatricula(Long id) {
         Matricula matricula = matriculaRepository.findById(id).orElseThrow();
         matriculaRepository.deleteById(matricula.getId());
         return "Matricula removida com sucesso!!";
     }
 
+    //buscar todas matriculas dos alunos
     public List<Matricula> buscarMatriculasDoAluno(Long alunoId) {
         Aluno aluno = alunoRepository.findById(alunoId).orElseThrow();
         return aluno.getMatriculas();
     }
 
+    //buscar todas as matriculas do curso
     public List<Matricula> buscarMatriculasDoCurso(Long cursoId) {
         Curso curso = cursoRepository.findById(cursoId).orElseThrow();
         return curso.getMatriculas();
