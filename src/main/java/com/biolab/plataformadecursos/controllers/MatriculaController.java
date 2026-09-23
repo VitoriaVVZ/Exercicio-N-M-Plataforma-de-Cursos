@@ -19,25 +19,25 @@ public class MatriculaController {
         this.matriculaService = matriculaService;
     }
 
-    @PostMapping
+    @PostMapping //cria a matricula
     public ResponseEntity<String> matricular(@RequestBody MatriculaDTO dto) {
         String resposta = matriculaService.matricular(dto.getAlunoId(), dto.getCursoId());
         return ResponseEntity.status(HttpStatus.CREATED).body(resposta);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") //deleta a matricula
     public ResponseEntity<String> removerMatricula(@PathVariable Long id) {
         String resposta = matriculaService.removerMatricula(id);
         return ResponseEntity.ok(resposta);
     }
 
-    @GetMapping("/aluno/{alunoId}")
+    @GetMapping("/aluno/{alunoId}") //mostra a matricula do aluno
     public ResponseEntity<List<Matricula>> buscarMatriculasDoAluno(@PathVariable Long alunoId) {
         List<Matricula> matriculas = matriculaService.buscarMatriculasDoAluno(alunoId);
         return ResponseEntity.ok(matriculas);
     }
 
-    @GetMapping("/curso/{cursoId}")
+    @GetMapping("/curso/{cursoId}") //mostra o curso onde o aluno foi matriculado
     public ResponseEntity<List<Matricula>> buscarMatriculasDoCurso(@PathVariable Long cursoId) {
         List<Matricula> matriculas = matriculaService.buscarMatriculasDoCurso(cursoId);
         return ResponseEntity.ok(matriculas);
