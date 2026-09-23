@@ -16,6 +16,7 @@ public class CursoService {
         this.cursoRepository = cursoRepository;
     }
 
+    //criar o curso
     public String criarCurso(CursoDTO dto) {
         Curso curso = new Curso();
         curso.setNome(dto.getNome());
@@ -24,6 +25,7 @@ public class CursoService {
         return "Curso criado com sucesso";
     }
 
+    //buscar curso por id
     public CursoDTO buscarCursoId(Long id) {
         Curso curso = cursoRepository.findById(id).orElseThrow();
         CursoDTO dto = new CursoDTO();
@@ -33,15 +35,18 @@ public class CursoService {
         return dto;
     }
 
+    //buscar todos os cursos
     public List<Curso> buscarTodosCursos() {
         return cursoRepository.findAll();
     }
 
+    //deletar curso
     public String deletarCurso(long id) {
         cursoRepository.deleteById(id);
         return "excluido com sucesso";
     }
 
+    //atualizar curso
     public CursoDTO atualizarCurso(Long id, CursoDTO dto) {
         Curso curso = cursoRepository.findById(id).orElseThrow();
         CursoDTO c = new CursoDTO();
