@@ -16,6 +16,7 @@ public class AlunoService {
         this.alunoRepository = alunoRepository;
     }
 
+    //cadastrar aluno
     public String cadastrarAluno(AlunoDTO dto) {
         Aluno aluno = new Aluno();
         aluno.setNome(dto.getNome());
@@ -24,6 +25,7 @@ public class AlunoService {
         return "Aluno criado com sucesso";
     }
 
+    //buscar aluno por id
     public AlunoDTO buscarAlunoId(Long id) {
         Aluno aluno = alunoRepository.findById(id).orElseThrow();
         AlunoDTO dto = new AlunoDTO();
@@ -33,10 +35,12 @@ public class AlunoService {
         return dto;
     }
 
+    //buscar por todos os alunos
     public List<Aluno> buscarTodosAlunos(){
         return alunoRepository.findAll();
     }
 
+    //atuslizar o aluno
     public AlunoDTO atualizarAluno(Long id, AlunoDTO dto){
         Aluno aluno = alunoRepository.findById(id).orElseThrow();
         AlunoDTO a = new AlunoDTO();
@@ -49,6 +53,7 @@ public class AlunoService {
         return a;
     }
 
+    //deletar o aluno
     public String deletarAluno(long id) {
         alunoRepository.deleteById(id);
         return "excluido com sucesso";
